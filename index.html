@@ -91,8 +91,10 @@
 	    czindex = []
 	    max = choose_list.length - 1
 	    for(i=0; i<czcnt; i++) {
+	      array = new Uint8Array(1000);
+	      crypto.getRandomValues(array);
 	      for(j=0; j<1000; j++) {
-	        index_val = Math.floor(Math.random() * (max + 1 - 0));
+	        index_val = Math.floor(array[j] % (max + 1));
 	        if (!czindex.includes(index_val)) {
 	          czindex.push(index_val)
 	          break;
